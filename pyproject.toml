@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "your-project-name"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <youremail@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "your_project" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.2"
+uvicorn = "^0.23.2"
+SQLAlchemy = "^2.0.21"
+pydantic = "^2.4.2"
+# Add all other dependencies here...
+
+[tool.poetry.dev-dependencies]
+black = "^23.10.0"
+flake8 = "^5.0.0"
+pylint = "^3.0.1"
+mypy = "^1.0.0"
+# Add dev dependencies (e.g., testing tools, linters, formatters)
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.pylint]
+max-line-length = 88
+disable = ["C0114", "C0115", "C0116"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.flake8]
+max-line-length = 88
+exclude = [
+    ".git",
+    "__pycache__",
+    "venv",
+    ".venv",
+    "migrations",
+    "tests",
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

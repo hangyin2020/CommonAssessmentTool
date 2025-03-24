@@ -18,6 +18,8 @@ from app.clients.schema import (
     ServiceResponse,
     ServiceUpdate
 )
+from app.clients.service.logic import interpret_and_calculate
+from app.clients.schema import PredictionInput
 
 router = APIRouter(prefix="/clients", tags=["clients"])
 
@@ -186,3 +188,7 @@ async def delete_client(
     """Delete a client"""
     ClientService.delete_client(db, client_id)
     return None
+
+@router.post("/predictions")
+async def predict(data: PredictionInput):
+    return interpret_and_calculate(data.model_dump())
